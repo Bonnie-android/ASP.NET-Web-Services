@@ -25,4 +25,8 @@ It is not necessary to serialize and deserialize .NET CLR objects to and from th
 
 What happens when a web service reference is added?
 A .NET appliction is able to generate a proxy class based on the web service which can be used in any application.
+------------------------------------------------------------------------------------------------------------
+Can we overload a web services method? yes but you must provide each version with a unique Message Name using the Message Name attribute of the WebMethod tag. Example:  [WebMethod (EnableSession =true,Description ="Adds two integers entered by client",MessageName ="AddTwo")] Here the message name is AddTwo. We must also set the web services binding to None. [WebServiceBinding(ConformsTo = WsiProfiles.None)].
+---------------------------------------------------------------------------------------------------------------
+Setting the EnableSession attribute of the WebMethod tag to true allows us to use the SESSION variable.
 
