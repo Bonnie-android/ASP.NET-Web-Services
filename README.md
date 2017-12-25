@@ -11,3 +11,18 @@ The example method is Calculator_WebService.asmx which accepts two numbers and r
 This example contains a method called Add which takes in two integers and returns the sum which is of type integer. 
 I have also included a client app called Calculator_App which consumes the web service. This client application references the web service and creates a proxy class based on the WSDL of the web service. A client is then created that interacts with the proxy class, Calculator_Service, which in turn interacts with the web service.
 
+--------------------------------------------------------------------------------------------------------
+What is a WSDL and what is it's purpose?
+WSDL stands for Web Service Description Language and provides a formal definition of a web service. It contains all of the methods that are exposed by the web service.
+It contains the parameters and their data types. It also contains the return types of the methods.
+
+How is a proxy class generated?
+Visual Studio generates a proxy class using the WSDL document of a web service. The client application calls the proxy class method. The proxy class will then serialize the parameters, prepare a SOAP request message and send it to the web service.
+The web service executes the method and returns a SOAP response message to the proxy. The proxy class will then deserialize the SOAP response message and provide it to the client application.
+
+What is the use of a proxy class? 
+It is not necessary to serialize and deserialize .NET CLR objects to and from the SOAP format. The proxy class does this automatically.
+
+What happens when a web service reference is added?
+A .NET appliction is able to generate a proxy class based on the web service which can be used in any application.
+
