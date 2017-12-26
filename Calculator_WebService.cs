@@ -8,7 +8,8 @@ using System.Web.Services;
 /// Summary description for Calculator_WebService
 /// </summary>
 [WebService(Namespace = "http://myCompanyWebsite.com/WebServices")]
-[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+//[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[WebServiceBinding(ConformsTo = WsiProfiles.None)]  //None for overloaded methods
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 // [System.Web.Script.Services.ScriptService]
 public class Calculator_WebService : System.Web.Services.WebService
@@ -21,7 +22,7 @@ public class Calculator_WebService : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
-    [WebMethod (EnableSession =true)]
+    [WebMethod (EnableSession =true,Description ="Adds two integers entered by client",MessageName ="AddTwo")]
     public int Add(int firstNumber, int secondNumber)
     {
 
@@ -44,8 +45,14 @@ public class Calculator_WebService : System.Web.Services.WebService
         return firstNumber + secondNumber;
     }
 
+    [WebMethod(Description ="Takes in three integers and returns the sum to client",MessageName ="AddThree")]
+    public int Add(int firstNumber, int secondNumber, int thirdNumber)
+    {
+        return firstNumber + secondNumber + thirdNumber;
+    }
+
     //return the list of calculations to the client
-    [WebMethod(EnableSession =true)]
+    [WebMethod(EnableSession =true,Description ="Returns the history of calculations made by the user")]
     public List<string> GetCalcList()
     {
         if(Session["CALCULATIONS"] == null)
